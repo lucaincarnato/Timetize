@@ -9,13 +9,12 @@ import SwiftUI
 
 struct TaskInfoView: View {
     
-    @State var task: Task
-    @State var textField: String = ""
+    @State var task: Task   // Placeholder task
     
     @ObservedObject var myData = sharedData
-    @State var shouldHideNewTaskView = false
     @Environment (\.dismiss) var dismiss
     
+    // Function to format Date to String
     func toString(format: String, dateSource: Date)->String{
         let formatter = DateFormatter()
         formatter.dateFormat = format
@@ -23,8 +22,11 @@ struct TaskInfoView: View {
     }
     
     var body: some View {
+        // START OF NAVIGATIONSTACK
         NavigationStack {
+            // START OF FORM
             Form {
+                // START OF SECTION for the information of the task
                 Section {
                     TextField("Task's name", text: $task.taskName)
                     DatePicker(selection: $task.taskStart, label: { Text("Start") })
@@ -38,6 +40,7 @@ struct TaskInfoView: View {
                     Toggle(isOn: $task.notification, label: {
                         Text("Notification")
                     })
+                    // Shown only if the notification is allowed
                     if(task.notification){
                         NavigationLink(destination: WallpaperAlertView()){
                             Text("Image notification")
@@ -48,8 +51,10 @@ struct TaskInfoView: View {
                             Text(tag.tagName).tag(tag.taskIndex)
                         }
                     }
-                }//MARK: END SECOND SECTION
-            }//MARK: END FORM
+                }
+                // END OF SECTION
+            }
+            // END OF FORM
             .background(.gray.opacity(0.1))
             .scrollContentBackground(.hidden)
             .navigationTitle("Task informations")
@@ -60,7 +65,8 @@ struct TaskInfoView: View {
                     }
                 }
             }
-        }//MARK: END NAV.STACK
+        }
+        // END OF NAVIGATIONSTACK
     }
 }
 

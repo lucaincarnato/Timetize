@@ -9,9 +9,11 @@ import SwiftUI
 
 struct HelpView: View {
     var body: some View {
+        // START OF NAVIGATION STACK
         NavigationStack {
             Text("Help not ready")
-        }//MARK: END NAV.STACK
+        }
+        // END OF NAVIGATION STACK
     }
 }
 

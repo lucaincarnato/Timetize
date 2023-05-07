@@ -22,6 +22,7 @@ struct ContainerView: View {
                     Image(systemName: "magnifyingglass")
                     Text("Search")
                 }
+            // Settings page
             SettingsView()
                 .tabItem {
                     Image(systemName: "gear")

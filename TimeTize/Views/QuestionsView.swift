@@ -8,21 +8,24 @@
 import SwiftUI
 
 struct QuestionsView: View {
+    
+    // Information of a task
     @Binding var name: String
     @Binding var shouldFreeze: Bool
     @Binding var shouldAllowNotifications: Bool
     @Binding var start: Date
     @Binding var end: Date
     @Binding var index: Int
-    @Binding var nTasks: Int
     @Binding var tags: [Tag]
     
     @ObservedObject var myData = sharedData
         
     
     var body: some View {
+        // START OF SECTION for the new task form
         Section(header: Text("info and properties"), footer: Text("Slide any section to delete"))  {
             TextField("Task's name", text: $name)
+            // It is shown only if the task is freezed
             if(shouldFreeze){
                 DatePicker(selection: $start, label: { Text("Start") })
                 DatePicker(selection: $end, label: { Text("End") })
@@ -37,13 +40,13 @@ struct QuestionsView: View {
             Toggle(isOn: $shouldFreeze, label: {
                 Text("Freeze task")
             })
-        
             NavigationLink(destination: RepetitionView()){
                 Text("Repetition")
             }
             Toggle(isOn: $shouldAllowNotifications, label: {
                 Text("Notification")
             })
+            // It is shown only if the task has notification
             if(shouldAllowNotifications){
                 NavigationLink(destination: WallpaperAlertView()){
                     Text("Image notification")
@@ -54,12 +57,13 @@ struct QuestionsView: View {
                     Text(tag.tagName).tag(tag.taskIndex)
                 }
             }
-        }//MARK: END SECOND SECTION
+        }
+        // END OF SECTION
     }
 }
 
 struct QuestionsView_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionsView(name: .constant(""), shouldFreeze: .constant(false), shouldAllowNotifications: .constant(false), start: .constant(Date()), end: .constant(Date()), index: .constant(0), nTasks: .constant(1), tags: .constant([Tag(tagName: "Work", colro: .blue, taskIndex: 0)]))
+        QuestionsView(name: .constant(""), shouldFreeze: .constant(false), shouldAllowNotifications: .constant(false), start: .constant(Date()), end: .constant(Date()), index: .constant(0),  tags: .constant([Tag(tagName: "Work", colro: .blue, taskIndex: 0)]))
     }
 }

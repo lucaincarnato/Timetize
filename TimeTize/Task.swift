@@ -22,14 +22,10 @@ struct Task: Identifiable{
     var searched: Bool
 }
 
+// Component of each tag
 struct Tag: Identifiable{
     var id = UUID()
     var tagName: String
     var colro: Color
     var taskIndex: Int
-}
-
-struct History: Identifiable{
-    var id = UUID()
-    var taskName: String
 }

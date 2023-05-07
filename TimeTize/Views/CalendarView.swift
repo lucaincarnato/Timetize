@@ -10,21 +10,22 @@ import Foundation
 
 struct CalendarView: View {
     
+    // Function to format a Date to string
     func toString(format: String, dateSource: Date)->String{
         let formatter = DateFormatter()
         formatter.dateFormat = format
         return formatter.string(from: dateSource)
     }
     
+    // Constant variable for all the hours slots
     let hours: [String] = ["12 AM","1 AM", "2 AM", "3 AM", "4 AM", "5 AM", "6 AM", "7 AM", "8 AM", "9 AM", "10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM", "5 PM", "6 PM", "7 PM", "8 PM", "9 PM", "10 PM", "11 PM"]
     
     @ObservedObject var myData = sharedData
-    @State var selectedDate: Date = Date()
-    @State private var period = 0
-    @State var shouldShowNewTaskView = false
-    @State var shouldShowSettingsView = false
-    @State var task: Task?
-    @Environment(\.colorScheme) var colorScheme
+    @State var selectedDate: Date = Date()  // Selection date variable for the datepicker
+    @State private var period = 0   // Variable for the period selection of the picker
+    @State var shouldShowNewTaskView = false    // Variable for the modal view selection
+    @State var task: Task?  // Placeholder task for the task information
+    @Environment(\.colorScheme) var colorScheme // Variable for the dark mode selection
     
     var body: some View {
         // START OF NAVIGATION STACK
@@ -67,22 +68,25 @@ struct CalendarView: View {
                             .padding(.horizontal)
                         // START OF SCROLLVIEW that allows only tasks to scroll
                         ScrollView {
-                            // START OF VSTACK for all the cards
+                            // START OF FOREACH for all the cards
                             ForEach(myData.tasks) { task in
+                                // Card showed only if the task relies on the actual day
                                 if(toString(format: "HH/MM/dd", dateSource: selectedDate) == toString(format: "HH/MM/dd", dateSource: task.taskStart)){
+                                    // Card for the task information
                                     Button {
                                         self.task = task
                                     } label: {
                                         CardView(name: task.taskName, hour: task.taskRange, tag: task.tagName, priority: 3)
                                             .foregroundColor(colorScheme == .light ? .white: .black)
                                     }
-                                    // END OF ZSTACK
                                 }
                             }
-                            // END OF VSTACK
+                            // END OF FOREACH
                         }
+                        // END OF SCROLLVIEW
                         .navigationTitle("Tasks")
                         .padding(.horizontal, 15)
+                        // Button to add new tasks
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 Button (action: {shouldShowNewTaskView = true}) {
@@ -91,14 +95,17 @@ struct CalendarView: View {
                                 
                             }
                         }
+                        // Modal view for the new task
                         .fullScreenCover(isPresented: $shouldShowNewTaskView) {
                             NewTaskView()
                         }
-                        // END OF SCROLLVIEW
                         // Case for the week view
                     case 1:
+                        // START OF SCROLLVIEW
                         ScrollView {
+                            // START OF FOREACH for the cards
                             ForEach (myData.tasks){ task in
+                                // Card for the task information
                                 Button {
                                     self.task = task
                                 } label: {
@@ -106,10 +113,13 @@ struct CalendarView: View {
                                         .foregroundColor(colorScheme == .light ? .white: .black)
                                 }
                             }
+                            // END OF FOREACH
                         }
+                        // END OF SCROLLVIEW
                         .navigationTitle("Tasks")
                         .padding(.vertical,20)
                         .padding(.horizontal)
+                        // Button to add new tasks
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 Button (action: {shouldShowNewTaskView = true}) {
@@ -118,33 +128,45 @@ struct CalendarView: View {
                                 
                             }
                         }
+                        // Modal view for the new task
                         .fullScreenCover(isPresented: $shouldShowNewTaskView) {
                             NewTaskView()
                         }
                         // Case for the day view
                     case 2:
+                        // START OF SCROLLVIEW
                         ScrollView {
+                            // START OF HSTACK for the hourly dividers
                             HStack {
+                                // START OF VSTACK for the hour
                                 VStack(spacing: 28) {
                                     ForEach(hours, id: \.self) { hour in
+                                        // START OF HSTACK
                                         HStack {
+                                            // Hour text
                                             Text(hour)
                                                 .font(Font.custom("Avenir", size: 9))
                                                 .frame(width: 28, height: 20, alignment: .center)
+                                            // Line
                                             VStack {
                                                 Divider()
                                             }
                                         }
+                                        // END OF HSTACK
                                     }
                                 }
-                                Spacer()
+                                // END OF VSTACK
+                                Spacer() // To give some space between hours
                             }
+                            // END OF HSTACK
                             .padding(.vertical)
                         }
+                        // END OF SCROLLVIEW
                         .padding(.bottom, 90)
                         .padding(.horizontal, 16)
                         .ignoresSafeArea()
                         .navigationTitle("Tasks")
+                        // Button to add new task
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 Button (action: {shouldShowNewTaskView = true}) {
@@ -153,6 +175,7 @@ struct CalendarView: View {
                                 
                             }
                         }
+                        // Modal view for new task
                         .fullScreenCover(isPresented: $shouldShowNewTaskView) {
                             NewTaskView()
                         }
@@ -164,10 +187,11 @@ struct CalendarView: View {
                 }
                 // END OF VSTACK
             }
+            // END OF ZSTACK
+            // It shows the Task informations when the card is clicked
             .sheet(item: $task) { task in
                 TaskInfoView(task: task)
             }
-            // END OF ZSTACK
         }
         // END OF NAVIGATION STACK
     }

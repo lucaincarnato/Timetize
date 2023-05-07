@@ -9,12 +9,10 @@ import SwiftUI
 
 struct SearchView: View {
     
-    @State var shouldShowNewTaskView = false
-    @State var shouldShowSettingsView = false
-    @State private var searchText = ""
+    @State private var searchText = ""  // Placeholder text for the search field
     @ObservedObject var myData = sharedData
-    @State var task: Task?
-    @Environment(\.colorScheme) var colorScheme
+    @State var task: Task?  // Placeholder task for the history
+    @Environment(\.colorScheme) var colorScheme // System color for the dark mode
     
     var body: some View {
         // START OF NAVIGATION STACK
@@ -27,8 +25,11 @@ struct SearchView: View {
                     .ignoresSafeArea()
                 // START OF SCROLLVIEW
                 ScrollView{
+                    // START OF FOREACH to show all the tasks with the searched text
                     ForEach ($myData.tasks){ $task in
+                        // Shows only the tasks that contains the written text
                         if(task.taskName.contains(searchText)){
+                            // Task Card
                             Button {
                                 if(!task.searched){
                                     task.searched.toggle()
@@ -38,15 +39,19 @@ struct SearchView: View {
                                 CardView(name: task.taskName, hour: task.taskRange, tag: task.tagName, priority: 3)
                                     .foregroundColor(colorScheme == .light ? .white: .black)
                             }
-                            // END OF ZSTACK
                         }
                     }
+                    // END OF FOREACH
+                    // START OF SECTION for the history
                     Section{
                         Text("HISTORY")
                             .font(.subheadline)
                             .foregroundColor(.gray)
+                        // START OF FOREACH to show all the searched tasks
                         ForEach(myData.tasks){ recent in
+                            // Show task only if searched is true
                             if(recent.searched){
+                                // Task card 
                                 Button {
                                     self.task = recent
                                 } label: {
@@ -59,19 +64,20 @@ struct SearchView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.top)
                 }
+                // END OF SCROLLVIEW
                 .padding(.horizontal, 15)
                 .padding(.vertical)
-                // END OF SCROLLVIEW
                 
             }
+            // END OF ZSTACK
             .navigationTitle("Search")
+            // Sheet to show task information
             .sheet(item: $task) { task in
                 TaskInfoView(task: task)
             }
-            // END OF ZSTACK
         }
-        .searchable(text: $searchText)
         // END OF NAVIGATION STACK
+        .searchable(text: $searchText)
     }
 }
 

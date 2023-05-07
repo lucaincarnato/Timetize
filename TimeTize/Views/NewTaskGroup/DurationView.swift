@@ -13,15 +13,20 @@ struct DurationView: View {
     @State var durationMinutes = 0
     
     var body: some View {
+        // START OF NAVIGATIONSTACK
         NavigationStack {
+            // START OF FORM
             Form{
+                // START OF SECTION for the duration
                 Section("Chose task duration"){
+                    // Picker for the hours duration
                     Picker(selection: $durationMinutes, label: Text("Duration")) {
                         ForEach(0..<24, id: \.self) { i in
                             Text("\(i) hrs").tag(i)
                         }
                     }
                     .pickerStyle(.wheel)
+                    // Picker for the minutes duration
                     Picker(selection: $durationHours, label: Text("Duration")) {
                         ForEach(0..<60, id: \.self) { i in
                             Text("\(i) min").tag(i)
@@ -29,10 +34,13 @@ struct DurationView: View {
                     }
                     .pickerStyle(.wheel)
                 }
+                // END OF SECTION
             }
+            // END OF FORM
             .background(.gray.opacity(0.1))
             .scrollContentBackground(.hidden)
-        }//MARK: END NAV.STACK
+        }
+        // END OF NAVIGATIONSTACK
     }
 }
 

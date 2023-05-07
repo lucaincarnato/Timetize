@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NewTaskView: View {
     
+    // Task information
     @State var name: String = ""
     @State private var shouldFreeze = false
     @State private var shouldAllowNotifications = false
@@ -20,12 +21,11 @@ struct NewTaskView: View {
     @State var index = 0
     @State var shouldPlan = false
     
-    @State var nTasks = 1
     
     @ObservedObject var myData = sharedData
-    @State var shouldHideNewTaskView = false
-    @Environment (\.dismiss) var dismiss
+    @Environment (\.dismiss) var dismiss    // Variable to dismiss modal view
     
+    // Function to format a Date to String
     func toString(format: String, dateSource: Date)->String{
         let formatter = DateFormatter()
         formatter.dateFormat = format
@@ -33,27 +33,36 @@ struct NewTaskView: View {
     }
     
     var body: some View {
+        // START OF NAVIGATIONSTACK
         NavigationStack {
+            // START OF FORM for all the new tasks
             Form {
+                // START OF FOREACH
                 ForEach(myData.newTasks){ task in
-                    QuestionsView(name: $name, shouldFreeze: $shouldFreeze, shouldAllowNotifications: $shouldAllowNotifications, start: $start, end: $end, index: $index, nTasks: $nTasks, tags: $myData.tags)
+                    QuestionsView(name: $name, shouldFreeze: $shouldFreeze, shouldAllowNotifications: $shouldAllowNotifications, start: $start, end: $end, index: $index, tags: $myData.tags)
                 }
+                // END OF FOREACH
+                // Sliding option to delete the new task form
                 .onDelete { task in
                     myData.newTasks.remove(atOffsets: task)
                 }
+                // Button to add a new task form
                 Button("Add new task") {
                     myData.newTasks.append(Task(taskName: "", taskStart: Date(), taskEnd: Date(), taskRange: "", repStart: Date(), repEnd: Date(), notification: false, tagName: "", searched: false))
                 }.padding(.leading, 100.0)
-            }//MARK: END FORM
+            }
+            // END OF FORM
             .background(.gray.opacity(0.1))
             .scrollContentBackground(.hidden)
             .navigationTitle("Planning")
             .toolbar {
+                // Button cancel to dismiss
                 ToolbarItem (placement: .cancellationAction){
                     Button ("Cancel"){
                         dismiss()
                     }
                 }
+                // Done button to go to the automatic planning and add the freezed tasks
                 ToolbarItem{
                     Button ("Done") {
                         myData.tasks.append(
@@ -73,10 +82,12 @@ struct NewTaskView: View {
                     }
                 }
             }
+            // Modal view for the automatic planning
             .sheet(isPresented: $shouldPlan){
                 PlanView()
             }
-        }//MARK: END NAV.STACK
+        }
+        // END OF NAVIGATION STACK
     }
 }
 
