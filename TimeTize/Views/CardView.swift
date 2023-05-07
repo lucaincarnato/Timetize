@@ -34,13 +34,17 @@ struct CardView: View {
                         .font(.title3)
                         .bold()
                         .frame(width: 170, height: 20, alignment: .leading) // To make the name overflow
-                    Text("Start: " + start)
+                    HStack{
+                        Text("Start: ").bold() + Text(start)
+                    }
                         .font(.subheadline)
                         .frame(width: 190, alignment: .leading)
-                    Text("End: " + end)
-                        .font(.subheadline)
-                        .frame(width: 190, alignment: .leading)
-                        .padding(.bottom,1)
+                    HStack{
+                        Text("End: ").bold() + Text(end)
+                    }
+                    .font(.subheadline)
+                    .frame(width: 190, alignment: .leading)
+                    .padding(.bottom,1)
                 }
                 // END OF VSTACK
                 .foregroundColor(.primary)
