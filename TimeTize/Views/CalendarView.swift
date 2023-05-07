@@ -71,12 +71,13 @@ struct CalendarView: View {
                             // START OF FOREACH for all the cards
                             ForEach(myData.tasks) { task in
                                 // Card showed only if the task relies on the actual day
-                                if(toString(format: "HH/MM/dd", dateSource: selectedDate) == toString(format: "HH/MM/dd", dateSource: task.taskStart)){
+                                let range = task.taskStart...task.taskEnd
+                                if(range.contains(selectedDate)){
                                     // Card for the task information
                                     Button {
                                         self.task = task
                                     } label: {
-                                        CardView(name: task.taskName, hour: task.taskRange, tag: task.tagName, priority: 3)
+                                        CardView(name: task.taskName, start: toString(format: "YY/MM/dd hh:mm a", dateSource: task.taskStart), end: toString(format: "YY/MM/dd hh:mm a", dateSource: task.taskEnd), tag: task.tagName, priority: 3)
                                             .foregroundColor(colorScheme == .light ? .white: .black)
                                     }
                                 }
@@ -109,7 +110,7 @@ struct CalendarView: View {
                                 Button {
                                     self.task = task
                                 } label: {
-                                    CardView(name: task.taskName, hour: task.taskRange, tag: task.tagName, priority: 3)
+                                    CardView(name: task.taskName, start: toString(format: "YY/MM/dd hh:mm a", dateSource: task.taskStart), end: toString(format: "YY/MM/dd hh:mm a", dateSource: task.taskEnd), tag: task.tagName, priority: 3)
                                         .foregroundColor(colorScheme == .light ? .white: .black)
                                 }
                             }

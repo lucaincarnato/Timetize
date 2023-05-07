@@ -10,7 +10,8 @@ import SwiftUI
 struct CardView: View {
     
     var name: String    // Placeholder name
-    var hour: String    // Placeholder hour
+    var start: String   // Placeholder start
+    var end: String    // Placeholder end
     var tag: String     // Placeholder tag
     var priority: Int   // Placeholder priority
     
@@ -24,7 +25,7 @@ struct CardView: View {
                 // Left line
                 Rectangle()
                     .foregroundColor(.gray)
-                    .frame(width: 5, height: 50)
+                    .frame(width: 5, height: 60)
                     .cornerRadius(10)
                     .opacity(0.4)
                 // START OF VSTACK
@@ -32,10 +33,14 @@ struct CardView: View {
                     Text(name)
                         .font(.title3)
                         .bold()
-                        .frame(width: 150, height: 20, alignment: .leading) // To make the name overflow
-                    Text(hour)
+                        .frame(width: 170, height: 20, alignment: .leading) // To make the name overflow
+                    Text("Start: " + start)
                         .font(.subheadline)
-                        .frame(width: 90, alignment: .leading)
+                        .frame(width: 190, alignment: .leading)
+                    Text("End: " + end)
+                        .font(.subheadline)
+                        .frame(width: 190, alignment: .leading)
+                        .padding(.bottom,1)
                 }
                 // END OF VSTACK
                 .foregroundColor(.primary)
@@ -65,6 +70,6 @@ struct CardView: View {
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(name: "Giusy", hour: "8:00-12:00", tag: "Tag", priority: 3)
+        CardView(name: "Giusy", start: "12/10/23 8:00-12:00", end: "12/10/23 8:00-12:00", tag: "Tag", priority: 3)
     }
 }

@@ -14,6 +14,13 @@ struct SearchView: View {
     @State var task: Task?  // Placeholder task for the history
     @Environment(\.colorScheme) var colorScheme // System color for the dark mode
     
+    // Function to format a Date to string
+    func toString(format: String, dateSource: Date)->String{
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.string(from: dateSource)
+    }
+    
     var body: some View {
         // START OF NAVIGATION STACK
         NavigationStack{
@@ -36,7 +43,7 @@ struct SearchView: View {
                                 }
                                 self.task = task
                             } label: {
-                                CardView(name: task.taskName, hour: task.taskRange, tag: task.tagName, priority: 3)
+                                CardView(name: task.taskName, start: toString(format: "YY/MM/dd hh:mm a", dateSource: task.taskStart), end: toString(format: "YY/MM/dd hh:mm a", dateSource: task.taskEnd), tag: task.tagName, priority: 3)
                                     .foregroundColor(colorScheme == .light ? .white: .black)
                             }
                         }
@@ -55,7 +62,7 @@ struct SearchView: View {
                                 Button {
                                     self.task = recent
                                 } label: {
-                                    CardView(name: recent.taskName, hour: recent.taskRange, tag: recent.tagName, priority: 3)
+                                    CardView(name: recent.taskName, start: toString(format: "YY/MM/dd hh:mm", dateSource: recent.taskStart), end: toString(format: "YY/MM/dd hh:mm", dateSource: recent.taskEnd), tag: recent.tagName, priority: 3)
                                         .foregroundColor(colorScheme == .light ? .white: .black)
                                 }
                             }
