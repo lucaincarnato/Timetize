@@ -16,14 +16,16 @@ class SharedData: ObservableObject {
     
     @Published var newTasks: [Task] = [
         Task(taskName: "", taskStart: Date(), taskEnd: Date(), taskRange: "", repStart: Date(), repEnd: Date(), notification: false, tagName: "", searched: false)
-]
+    ]
     
     @Published var tags = [
         Tag(tagName: "Personal", colro: .green, taskIndex: 0),
         Tag(tagName: "Work", colro: .blue, taskIndex: 1),
         Tag(tagName: "Family", colro: .pink, taskIndex: 2)
     ]
-    
+    @Published  var history = [
+        
+    ]
 }
 
 var sharedData = SharedData()

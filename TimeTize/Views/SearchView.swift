@@ -27,14 +27,18 @@ struct SearchView: View {
                     .ignoresSafeArea()
                 // START OF SCROLLVIEW
                 ScrollView{
-                    ForEach (myData.tasks){ task in
+                    ForEach ($myData.tasks){ $task in
                         if(task.taskName.contains(searchText)){
                             Button {
+                                if(!task.searched){
+                                    task.searched.toggle()
+                                }
                                 self.task = task
                             } label: {
                                 CardView(name: task.taskName, hour: task.taskRange, tag: task.tagName, priority: 3)
                                     .foregroundColor(colorScheme == .light ? .white: .black)
-                            }                            // END OF ZSTACK
+                            }
+                            // END OF ZSTACK
                         }
                     }
                     Section{
@@ -43,7 +47,12 @@ struct SearchView: View {
                             .foregroundColor(.gray)
                         ForEach(myData.tasks){ recent in
                             if(recent.searched){
-                                CardView(name: recent.taskName, hour: recent.taskRange, tag: recent.tagName, priority: 3)
+                                Button {
+                                    self.task = recent
+                                } label: {
+                                    CardView(name: recent.taskName, hour: recent.taskRange, tag: recent.tagName, priority: 3)
+                                        .foregroundColor(colorScheme == .light ? .white: .black)
+                                }
                             }
                         }
                     }
@@ -57,7 +66,7 @@ struct SearchView: View {
             }
             .navigationTitle("Search")
             .sheet(item: $task) { task in
-                Text("Oh")
+                TaskInfoView(task: task)
             }
             // END OF ZSTACK
         }
