@@ -31,7 +31,7 @@ struct TaskInfoView: View {
                     TextField("Task's name", text: $task.taskName)
                     DatePicker(selection: $task.taskStart, label: { Text("Start") })
                     DatePicker(selection: $task.taskEnd, label: { Text("End") })
-                    NavigationLink(destination: PriorityView()){
+                    NavigationLink(destination: PriorityView(indexOne: 0.0, indexTwo: 0.0, indexThree: 0.0)){
                         Text("Priority")
                     }
                     NavigationLink(destination: RepetitionView()){
@@ -53,6 +53,13 @@ struct TaskInfoView: View {
                     }
                 }
                 // END OF SECTION
+                // Button to delete the task
+                Button("Delete task") {
+                    dismiss()
+                    myData.tasks.remove(at: myData.tasks.firstIndex(of: task)!)
+                }
+                .padding(.leading, 125.0)
+                .foregroundColor(.red)
             }
             // END OF FORM
             .background(.gray.opacity(0.1))

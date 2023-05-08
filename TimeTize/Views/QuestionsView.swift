@@ -33,7 +33,7 @@ struct QuestionsView: View {
                 NavigationLink(destination: DurationView()){
                     Text("Duration")
                 }
-                NavigationLink(destination: PriorityView()){
+                NavigationLink(destination: PriorityView(indexOne: 0.0, indexTwo: 0.0, indexThree: 0.0)){
                     Text("Priority")
                 }
             }

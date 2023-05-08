@@ -10,17 +10,38 @@ import SwiftUI
 struct PriorityView: View {
     
     // Values and float index for the importance
-    @State var indexOne = 0.0
+    @State var indexOne: Float
     let importanceValues = ["Doesn't matter", "Matters", "Really Matters"]
     
     // Values and float index for the urgency
-    @State var indexTwo = 0.0
+    @State var indexTwo: Float
     let urgencyValues = ["Could do", "Should do", "Must do"]
     
     // Values and float index for the usefulness
-    @State var indexThree = 0.0
+    @State var indexThree: Float
     let usefulnessValues = ["Not useful", "Useful", "Very useful"]
     
+    // Function to assign each priority value a color
+    func toColor(priority: Int)->Color{
+        switch(priority){
+        case 0:
+            return Color.blue
+        case 1:
+            return Color.cyan
+        case 2:
+            return Color.teal
+        case 3:
+            return Color.green
+        case 4:
+            return Color.yellow
+        case 5:
+            return Color.orange
+        case 6:
+            return Color.red
+        default:
+            return Color.gray
+        }
+    }
     
     var body: some View {
         // START OF NAVIGATIONSTACK
@@ -42,6 +63,11 @@ struct PriorityView: View {
                     Text("USEFULNESS: " + usefulnessValues[Int(indexThree)])
                     Slider(value: $indexThree, in: 0...2, step: 1)
                 }
+                // The circle shows the user what the priority will look like in the card
+                Circle()
+                    .frame(width: 100)
+                    .padding(.horizontal,200)
+                    .foregroundColor(toColor(priority: Int(indexOne+indexTwo+indexThree)))
             }
             // END OF FORM
             .background(.gray.opacity(0.1))
@@ -53,7 +79,7 @@ struct PriorityView: View {
 
     struct PriorityView_Previews: PreviewProvider {
         static var previews: some View {
-            PriorityView()
+            PriorityView(indexOne: 0.0, indexTwo: 0.0, indexThree: 0.0)
         }
     }
 }

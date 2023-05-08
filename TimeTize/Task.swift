@@ -9,7 +9,9 @@ import Foundation
 import SwiftUI
 
 // Component of each single task, not done yet
-struct Task: Identifiable{
+// Identifiable is needed to iterate
+// Equatable is needed to the remove function
+struct Task: Identifiable, Equatable{
     var id = UUID()
     var taskName: String
     var taskStart: Date

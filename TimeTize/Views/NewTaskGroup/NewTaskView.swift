@@ -14,7 +14,7 @@ struct NewTaskView: View {
     @State private var shouldFreeze = false
     @State private var shouldAllowNotifications = false
     @State var start: Date = Date()
-    @State var end: Date = Date()
+    @State var end: Date = Date().addingTimeInterval(3600)
     @State var range: String = ""
     @State var rStart: Date = Date()
     @State var rEnd: Date = Date()

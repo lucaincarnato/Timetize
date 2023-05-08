@@ -15,6 +15,28 @@ struct CardView: View {
     var tag: String     // Placeholder tag
     var priority: Int   // Placeholder priority
     
+    // Function to assign each priority value a color
+    func toColor(priority: Int)->Color{
+        switch(priority){
+        case 0:
+            return Color.blue
+        case 1:
+            return Color.cyan
+        case 2:
+            return Color.teal
+        case 3:
+            return Color.green
+        case 4:
+            return Color.yellow
+        case 5:
+            return Color.orange
+        case 6:
+            return Color.red
+        default:
+            return Color.gray
+        }
+    }
+    
     var body: some View {
         // START OF ZSTACH
         ZStack{
@@ -28,6 +50,7 @@ struct CardView: View {
                     .frame(width: 5, height: 60)
                     .cornerRadius(10)
                     .opacity(0.4)
+                    .padding(.horizontal,10)
                 // START OF VSTACK
                 VStack (alignment: .leading){
                     Text(name)
@@ -49,7 +72,6 @@ struct CardView: View {
                 // END OF VSTACK
                 .foregroundColor(.primary)
                 .padding(.vertical)
-                .padding(.horizontal)
                 // START OF ZSTACK for the tag
                 ZStack{
                     // Container
@@ -58,12 +80,14 @@ struct CardView: View {
                         .opacity(0.4)
                         .frame(width: 100, height: 35)
                         .cornerRadius(30)
-                        .padding(.horizontal)
                     Text(tag)
                         .foregroundColor(.white)
                 }
                 // END OF ZSTACK
-                .padding(.horizontal, 1)
+                Circle()
+                    .frame(width: 35)
+                    .foregroundColor(toColor(priority: priority))
+                    .padding(.horizontal,2)
             }
             // END OF HSTACK
         }

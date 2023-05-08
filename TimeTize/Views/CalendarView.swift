@@ -71,8 +71,9 @@ struct CalendarView: View {
                             // START OF FOREACH for all the cards
                             ForEach(myData.tasks) { task in
                                 // Card showed only if the task relies on the actual day
-                                let range = task.taskStart...task.taskEnd
-                                if(range.contains(selectedDate)){
+                                // The strange modifier that starts with ISO makes the range only about day, month and year, not including hour and minutes, that would have generated a bug
+                                let range = task.taskStart.ISO8601Format(.iso8601.year().month().day())...task.taskEnd.ISO8601Format(.iso8601.year().month().day())
+                                if(range.contains(selectedDate.ISO8601Format(.iso8601.year().month().day()))){
                                     // Card for the task information
                                     Button {
                                         self.task = task
