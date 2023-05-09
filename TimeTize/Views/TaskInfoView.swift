@@ -46,9 +46,9 @@ struct TaskInfoView: View {
                             Text("Image notification")
                         }
                     }
-                    Picker(selection: $task.tagName, label: Text("Tag")) {
-                        ForEach(myData.tags) { tag in
-                            Text(tag.tagName).tag(tag.taskIndex)
+                    Picker(selection: $task.tagIndex, label: Text("Tag")) {
+                        ForEach(0..<myData.tags.count, id: \.self) { i in
+                            Text(myData.tags[i].tagName).tag(i)
                         }
                     }
                 }
@@ -79,6 +79,6 @@ struct TaskInfoView: View {
 
 struct TaskInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        TaskInfoView(task: Task(taskName: "", taskStart: Date(), taskEnd: Date(), taskRange: "", repStart: Date(), repEnd: Date(), notification: false, tagName: "", searched: false))
+        TaskInfoView(task: Task(taskName: "", taskStart: Date(), taskEnd: Date(), taskRange: "", repStart: Date(), repEnd: Date(), notification: false, tagIndex: 0, searched: false))
     }
 }

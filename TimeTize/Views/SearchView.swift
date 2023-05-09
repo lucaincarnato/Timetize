@@ -43,7 +43,7 @@ struct SearchView: View {
                                 }
                                 self.task = task
                             } label: {
-                                CardView(name: task.taskName, start: toString(format: "YY/MM/dd hh:mm a", dateSource: task.taskStart), end: toString(format: "YY/MM/dd hh:mm a", dateSource: task.taskEnd), tag: task.tagName, priority: 3)
+                                CardView(name: task.taskName, start: toString(format: "YY/MM/dd hh:mm a", dateSource: task.taskStart), end: toString(format: "YY/MM/dd hh:mm a", dateSource: task.taskEnd), index: task.tagIndex, priority: 3)
                                     .foregroundColor(colorScheme == .light ? .white: .black)
                             }
                         }
@@ -62,7 +62,7 @@ struct SearchView: View {
                                 Button {
                                     self.task = recent
                                 } label: {
-                                    CardView(name: recent.taskName, start: toString(format: "YY/MM/dd hh:mm", dateSource: recent.taskStart), end: toString(format: "YY/MM/dd hh:mm", dateSource: recent.taskEnd), tag: recent.tagName, priority: 3)
+                                    CardView(name: recent.taskName, start: toString(format: "YY/MM/dd hh:mm", dateSource: recent.taskStart), end: toString(format: "YY/MM/dd hh:mm", dateSource: recent.taskEnd), index: recent.tagIndex, priority: 3)
                                         .foregroundColor(colorScheme == .light ? .white: .black)
                                 }
                             }

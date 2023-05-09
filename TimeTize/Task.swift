@@ -20,7 +20,7 @@ struct Task: Identifiable, Equatable{
     var repStart: Date
     var repEnd: Date
     var notification: Bool
-    var tagName: String
+    var tagIndex: Int
     var searched: Bool
 }
 
@@ -28,6 +28,4 @@ struct Task: Identifiable, Equatable{
 struct Tag: Identifiable{
     var id = UUID()
     var tagName: String
-    var colro: Color
-    var taskIndex: Int
 }

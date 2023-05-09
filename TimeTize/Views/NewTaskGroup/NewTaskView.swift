@@ -48,7 +48,7 @@ struct NewTaskView: View {
                 }
                 // Button to add a new task form
                 Button("Add new task") {
-                    myData.newTasks.append(Task(taskName: "", taskStart: Date(), taskEnd: Date(), taskRange: "", repStart: Date(), repEnd: Date(), notification: false, tagName: "", searched: false))
+                    myData.newTasks.append(Task(taskName: "", taskStart: Date(), taskEnd: Date(), taskRange: "", repStart: Date(), repEnd: Date(), notification: false, tagIndex: 0, searched: false))
                 }.padding(.leading, 100.0)
             }
             // END OF FORM
@@ -74,7 +74,7 @@ struct NewTaskView: View {
                                 repStart: rStart,
                                 repEnd: rEnd,
                                 notification: false,
-                                tagName: myData.tags[index].tagName,
+                                tagIndex: index,
                                 searched: false
                             )
                         )

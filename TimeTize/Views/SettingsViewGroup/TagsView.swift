@@ -10,7 +10,6 @@ import SwiftUI
 struct TagsView: View {
     
     @State var name = ""    // Placeholder text for the new tag
-    @State var color = Color.blue   // Default color for the picker
     @ObservedObject var myData = sharedData
     
     var body: some View {
@@ -21,17 +20,18 @@ struct TagsView: View {
                 // START OF SECTION for the new task
                 Section("Add a new tag") {
                     TextField("Tag's name", text: $name)
-                    ColorPicker("Tag's color", selection: $color)
+                }
+                .onSubmit {
+                    myData.tags.append(Tag(tagName: name))
                 }
                 // END OF SECTION
                 // START OF SECTION for the existing tags
                 Section("Existing tags"){
                     ForEach(myData.tags){ tag in
                         Text(tag.tagName)
-                            .foregroundColor(tag.colro)
                     }
-                    .onDelete { index in
-                        myData.tags.remove(atOffsets: index)
+                    .onDelete { tag in
+                        myData.tags.remove(atOffsets: tag)
                     }
                 }
                 // END OF SECTION

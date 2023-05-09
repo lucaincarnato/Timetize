@@ -12,8 +12,10 @@ struct CardView: View {
     var name: String    // Placeholder name
     var start: String   // Placeholder start
     var end: String    // Placeholder end
-    var tag: String     // Placeholder tag
+    var index: Int     // Placeholder tag
     var priority: Int   // Placeholder priority
+    
+    @ObservedObject var myData = sharedData
     
     // Function to assign each priority value a color
     func toColor(priority: Int)->Color{
@@ -80,7 +82,7 @@ struct CardView: View {
                         .opacity(0.4)
                         .frame(width: 100, height: 35)
                         .cornerRadius(30)
-                    Text(tag)
+                    Text(myData.tags[index].tagName)
                         .foregroundColor(.white)
                 }
                 // END OF ZSTACK
@@ -98,6 +100,6 @@ struct CardView: View {
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(name: "Giusy", start: "12/10/23 8:00-12:00", end: "12/10/23 8:00-12:00", tag: "Tag", priority: 3)
+        CardView(name: "Giusy", start: "12/10/23 8:00-12:00", end: "12/10/23 8:00-12:00", index: 0, priority: 3)
     }
 }

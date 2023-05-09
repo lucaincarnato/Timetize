@@ -53,8 +53,8 @@ struct QuestionsView: View {
                 }
             }
             Picker(selection: $index, label: Text("Tag")) {
-                ForEach(tags) { tag in
-                    Text(tag.tagName).tag(tag.taskIndex)
+                ForEach(0..<myData.tags.count, id: \.self) { i in
+                    Text(myData.tags[i].tagName).tag(i)
                 }
             }
         }
@@ -64,6 +64,6 @@ struct QuestionsView: View {
 
 struct QuestionsView_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionsView(name: .constant(""), shouldFreeze: .constant(false), shouldAllowNotifications: .constant(false), start: .constant(Date()), end: .constant(Date()), index: .constant(0),  tags: .constant([Tag(tagName: "Work", colro: .blue, taskIndex: 0)]))
+        QuestionsView(name: .constant(""), shouldFreeze: .constant(false), shouldAllowNotifications: .constant(false), start: .constant(Date()), end: .constant(Date()), index: .constant(0),  tags: .constant([Tag(tagName: "Work")]))
     }
 }
