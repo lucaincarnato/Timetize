@@ -29,3 +29,11 @@ struct Tag: Identifiable{
     var id = UUID()
     var tagName: String
 }
+
+// Components for the free time
+struct FreeTime: Identifiable{
+    var id = UUID()
+    var name: String
+    var start: Date
+    var end: Date
+}

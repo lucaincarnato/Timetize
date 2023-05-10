@@ -25,6 +25,15 @@ class SharedData: ObservableObject {
         Tag(tagName: "Work"),
         Tag(tagName: "Family")
     ]
+    
+    // Array for the free times
+    @Published var freeTimes = [
+        FreeTime(name: "Dinner", start: Date.now, end: Date.now.addingTimeInterval(3600))
+    ]
+    
+    // Variables that will store the sleep and wake up periods
+//    @Published var wakeUp
+//    @Published var goToSleep
 }
 
 var sharedData = SharedData()

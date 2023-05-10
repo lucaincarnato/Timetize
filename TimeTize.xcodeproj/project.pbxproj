@@ -22,6 +22,7 @@
 		4257CB1229F9AAAA00DFFB78 /* RepetitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4257CB1129F9AAAA00DFFB78 /* RepetitionView.swift */; };
 		4257CB1429F9AE6E00DFFB78 /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4257CB1329F9AE6E00DFFB78 /* PlanView.swift */; };
 		4257CB1629F9B2C100DFFB78 /* TagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4257CB1529F9B2C100DFFB78 /* TagsView.swift */; };
+		4260C1A02A0AF11A00E276BD /* NewFreeTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4260C19F2A0AF11A00E276BD /* NewFreeTimeView.swift */; };
 		427B4EB929F9A22700C8FCC4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427B4EB829F9A22700C8FCC4 /* SettingsView.swift */; };
 		42982F5029F97F4F00A55A01 /* WallpaperAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42982F4F29F97F4F00A55A01 /* WallpaperAlertView.swift */; };
 		42B31FD329FA50EC00E145EA /* DurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B31FD229FA50EC00E145EA /* DurationView.swift */; };
@@ -47,6 +48,7 @@
 		4257CB1129F9AAAA00DFFB78 /* RepetitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepetitionView.swift; sourceTree = "<group>"; };
 		4257CB1329F9AE6E00DFFB78 /* PlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
 		4257CB1529F9B2C100DFFB78 /* TagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsView.swift; sourceTree = "<group>"; };
+		4260C19F2A0AF11A00E276BD /* NewFreeTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFreeTimeView.swift; sourceTree = "<group>"; };
 		427B4EB829F9A22700C8FCC4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		42982F4F29F97F4F00A55A01 /* WallpaperAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperAlertView.swift; sourceTree = "<group>"; };
 		42B31FD229FA50EC00E145EA /* DurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationView.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				4257CB0929F9A9E100DFFB78 /* FreeTimeView.swift */,
 				4257CB0F29F9AA2B00DFFB78 /* HelpView.swift */,
 				4257CB1529F9B2C100DFFB78 /* TagsView.swift */,
+				4260C19F2A0AF11A00E276BD /* NewFreeTimeView.swift */,
 			);
 			path = SettingsViewGroup;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 				42982F5029F97F4F00A55A01 /* WallpaperAlertView.swift in Sources */,
 				4257CB1429F9AE6E00DFFB78 /* PlanView.swift in Sources */,
 				4257CB0A29F9A9E100DFFB78 /* FreeTimeView.swift in Sources */,
+				4260C1A02A0AF11A00E276BD /* NewFreeTimeView.swift in Sources */,
 				4257CB1229F9AAAA00DFFB78 /* RepetitionView.swift in Sources */,
 				4257CB1029F9AA2B00DFFB78 /* HelpView.swift in Sources */,
 				427B4EB929F9A22700C8FCC4 /* SettingsView.swift in Sources */,

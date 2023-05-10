@@ -10,6 +10,7 @@ import SwiftUI
 struct FreeTimeView: View {
     
     @State var name = ""
+    @ObservedObject var myData = sharedData
     
     var body: some View {
         // START OF NAVIGATIONSTACK
@@ -22,18 +23,18 @@ struct FreeTimeView: View {
                     DatePicker(selection: .constant(Date()), displayedComponents: .hourAndMinute, label: { Text("Day ends at") })
                 }
                 // END OF SECTION
-                // START OF SECTION for custom free time
-                Section("Other free times") {
-                    TextField("Free time's name", text: $name)
-                    DatePicker(selection: .constant(Date()), displayedComponents: .hourAndMinute, label: { Text("Start") })
-                    DatePicker(selection: .constant(Date()), displayedComponents: .hourAndMinute, label: { Text("End") })
-                    DatePicker(selection: .constant(Date()), displayedComponents: .date, label: { Text("From") })
-                    DatePicker(selection: .constant(Date()), displayedComponents: .date, label: { Text("To") })
+                // START OF FOREACH to show all the set free time
+                ForEach(myData.freeTimes){ ft in
+                    NewFreeTimeView(freeTime: ft)
                 }
-                // END OF SECTION
+                .onDelete { ft in
+                    myData.freeTimes.remove(atOffsets: ft)
+                }
+                // END OF FOREACH
                 // Button to add new free time
                 Button("Add new free time") {
-                    print("ciao")
+                    myData.freeTimes.append(FreeTime(name: "", start: Date(), end: Date()))
+                    print(myData.freeTimes)
                 }.padding(.leading, 100.0)
             }
             // END OF FORM
