@@ -5,10 +5,14 @@
 //  Created by Luca Maria Incarnato on 21/04/23.
 //
 
+
+
 import SwiftUI
 import Foundation
+import UserNotifications
 
 struct CalendarView: View {
+    
     
     // Function to format a Date to string
     func toString(format: String, dateSource: Date)->String{
@@ -91,7 +95,9 @@ struct CalendarView: View {
                         // Button to add new tasks
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
-                                Button (action: {shouldShowNewTaskView = true}) {
+                                Button {
+                                    shouldShowNewTaskView = true
+                                } label: {
                                     Image(systemName: "plus")
                                 }
                                 
@@ -124,7 +130,9 @@ struct CalendarView: View {
                         // Button to add new tasks
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
-                                Button (action: {shouldShowNewTaskView = true}) {
+                                Button {
+                                    shouldShowNewTaskView = true
+                                } label: {
                                     Image(systemName: "plus")
                                 }
                                 
@@ -171,7 +179,9 @@ struct CalendarView: View {
                         // Button to add new task
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
-                                Button (action: {shouldShowNewTaskView = true}) {
+                                Button {
+                                    shouldShowNewTaskView = true
+                                } label: {
                                     Image(systemName: "plus")
                                 }
                                 

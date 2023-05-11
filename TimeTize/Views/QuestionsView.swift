@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct QuestionsView: View {
+
     
     // Information of a task
     @Binding var name: String
