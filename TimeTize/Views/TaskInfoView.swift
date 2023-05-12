@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TaskInfoView: View {
     
-    @State var task: Task   // Placeholder task
+    @State var task: PlannedTask   // Placeholder task
     
     @ObservedObject var myData = sharedData
     @Environment (\.dismiss) var dismiss
@@ -79,6 +79,6 @@ struct TaskInfoView: View {
 
 struct TaskInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        TaskInfoView(task: Task(taskName: "", taskStart: Date(), taskEnd: Date(), taskRange: "", repStart: Date(), repEnd: Date(), notification: false, tagIndex: 0, searched: false))
+        TaskInfoView(task: PlannedTask(taskName: "", taskStart: Date(), taskEnd: Date(), taskRange: "", repStart: Date(), repEnd: Date(), notification: false, tagIndex: 0, searched: false))
     }
 }

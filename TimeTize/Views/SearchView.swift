@@ -11,7 +11,7 @@ struct SearchView: View {
     
     @State private var searchText = ""  // Placeholder text for the search field
     @ObservedObject var myData = sharedData
-    @State var task: Task?  // Placeholder task for the history
+    @State var task: PlannedTask?  // Placeholder task for the history
     @Environment(\.colorScheme) var colorScheme // System color for the dark mode
     
     // Function to format a Date to string

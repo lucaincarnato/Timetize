@@ -10,7 +10,6 @@
 		4231668429FC07C4001C8C18 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4231668329FC07C4001C8C18 /* CardView.swift */; };
 		4231668629FC16D4001C8C18 /* QuestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4231668529FC16D4001C8C18 /* QuestionsView.swift */; };
 		4238715729F315EE00515B3D /* TimeTizeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4238715629F315EE00515B3D /* TimeTizeApp.swift */; };
-		4238715B29F315EF00515B3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4238715A29F315EF00515B3D /* Assets.xcassets */; };
 		4238715E29F315EF00515B3D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4238715D29F315EF00515B3D /* Preview Assets.xcassets */; };
 		4238716529F3160300515B3D /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4238716429F3160300515B3D /* ContainerView.swift */; };
 		4238716829F3166E00515B3D /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4238716729F3166E00515B3D /* CalendarView.swift */; };
@@ -23,6 +22,7 @@
 		4257CB1429F9AE6E00DFFB78 /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4257CB1329F9AE6E00DFFB78 /* PlanView.swift */; };
 		4257CB1629F9B2C100DFFB78 /* TagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4257CB1529F9B2C100DFFB78 /* TagsView.swift */; };
 		4260C1A02A0AF11A00E276BD /* NewFreeTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4260C19F2A0AF11A00E276BD /* NewFreeTimeView.swift */; };
+		4274C73A2A0EDCBB009A7755 /* Asset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4274C7392A0EDCBB009A7755 /* Asset.xcassets */; };
 		427B4EB929F9A22700C8FCC4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427B4EB829F9A22700C8FCC4 /* SettingsView.swift */; };
 		42982F5029F97F4F00A55A01 /* WallpaperAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42982F4F29F97F4F00A55A01 /* WallpaperAlertView.swift */; };
 		42B31FD329FA50EC00E145EA /* DurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B31FD229FA50EC00E145EA /* DurationView.swift */; };
@@ -36,7 +36,6 @@
 		4231668529FC16D4001C8C18 /* QuestionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsView.swift; sourceTree = "<group>"; };
 		4238715329F315EE00515B3D /* TimeTize.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeTize.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4238715629F315EE00515B3D /* TimeTizeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTizeApp.swift; sourceTree = "<group>"; };
-		4238715A29F315EF00515B3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4238715D29F315EF00515B3D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4238716429F3160300515B3D /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
 		4238716729F3166E00515B3D /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -49,6 +48,7 @@
 		4257CB1329F9AE6E00DFFB78 /* PlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
 		4257CB1529F9B2C100DFFB78 /* TagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsView.swift; sourceTree = "<group>"; };
 		4260C19F2A0AF11A00E276BD /* NewFreeTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFreeTimeView.swift; sourceTree = "<group>"; };
+		4274C7392A0EDCBB009A7755 /* Asset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Asset.xcassets; sourceTree = "<group>"; };
 		427B4EB829F9A22700C8FCC4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		42982F4F29F97F4F00A55A01 /* WallpaperAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperAlertView.swift; sourceTree = "<group>"; };
 		42B31FD229FA50EC00E145EA /* DurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationView.swift; sourceTree = "<group>"; };
@@ -91,8 +91,8 @@
 				4238715629F315EE00515B3D /* TimeTizeApp.swift */,
 				4238716E29F3170800515B3D /* Data.swift */,
 				4238717029F3170F00515B3D /* Task.swift */,
-				4238715A29F315EF00515B3D /* Assets.xcassets */,
 				4238715C29F315EF00515B3D /* Preview Content */,
+				4274C7392A0EDCBB009A7755 /* Asset.xcassets */,
 			);
 			path = TimeTize;
 			sourceTree = "<group>";
@@ -203,8 +203,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4274C73A2A0EDCBB009A7755 /* Asset.xcassets in Resources */,
 				4238715E29F315EF00515B3D /* Preview Assets.xcassets in Resources */,
-				4238715B29F315EF00515B3D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

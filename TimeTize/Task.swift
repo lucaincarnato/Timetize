@@ -11,7 +11,7 @@ import SwiftUI
 // Component of each single task, not done yet
 // Identifiable is needed to iterate
 // Equatable is needed to the remove function
-struct Task: Identifiable, Equatable{
+struct PlannedTask: Identifiable, Equatable{
     var id = UUID()
     var taskName: String
     var taskStart: Date

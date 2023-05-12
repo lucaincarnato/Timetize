@@ -28,7 +28,7 @@ struct CalendarView: View {
     @State var selectedDate: Date = Date()  // Selection date variable for the datepicker
     @State private var period = 0   // Variable for the period selection of the picker
     @State var shouldShowNewTaskView = false    // Variable for the modal view selection
-    @State var task: Task?  // Placeholder task for the task information
+    @State var task: PlannedTask?  // Placeholder task for the task information
     @Environment(\.colorScheme) var colorScheme // Variable for the dark mode selection
     
     var body: some View {

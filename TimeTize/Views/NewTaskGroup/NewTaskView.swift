@@ -83,7 +83,7 @@ struct NewTaskView: View {
                 }
                 // Button to add a new task form
                 Button("Add new task") {
-                    myData.newTasks.append(Task(taskName: "", taskStart: Date(), taskEnd: Date(), taskRange: "", repStart: Date(), repEnd: Date(), notification: false, tagIndex: 0, searched: false))
+                    myData.newTasks.append(PlannedTask(taskName: "", taskStart: Date(), taskEnd: Date(), taskRange: "", repStart: Date(), repEnd: Date(), notification: false, tagIndex: 0, searched: false))
                 }.padding(.leading, 100.0)
             }
             // END OF FORM
@@ -101,7 +101,7 @@ struct NewTaskView: View {
                 ToolbarItem{
                     Button ("Done") {
                         myData.tasks.append(
-                            Task(
+                            PlannedTask(
                                 taskName: name,
                                 taskStart: start,
                                 taskEnd: end,
