@@ -79,6 +79,6 @@ struct TaskInfoView: View {
 
 struct TaskInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        TaskInfoView(task: PlannedTask(taskName: "", taskStart: Date(), taskEnd: Date(), taskRange: "", repStart: Date(), repEnd: Date(), notification: false, tagIndex: 0, searched: false))
+        TaskInfoView(task: PlannedTask(taskName: "", taskStart: Date(), taskEnd: Date(),  repStart: Date(), repEnd: Date(), notification: false, tagIndex: 0, searched: false))
     }
 }

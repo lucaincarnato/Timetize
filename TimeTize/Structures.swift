@@ -16,13 +16,25 @@ struct PlannedTask: Identifiable, Equatable{
     var taskName: String
     var taskStart: Date
     var taskEnd: Date
-    var taskRange: String
     var repStart: Date
     var repEnd: Date
     var notification: Bool
     var taskImage: Image?
     var tagIndex: Int
     var searched: Bool
+    var priority: Int = 0
+}
+
+struct ToPlanTask: Identifiable, Equatable{
+    var id = UUID()
+    var taskName: String
+    var Duration: Int
+    var priority: Int
+    var repStart: Date
+    var repEnd: Date
+    var notification: Bool
+    var taskImage: Image?
+    var tagIndex: Int
 }
 
 // Component of each tag

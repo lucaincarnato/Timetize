@@ -48,11 +48,11 @@ struct NotificationImageView: View {
                     PhotosPicker(selection: $selectedItem, matching: .any(of: [.images, .not(.videos)])) {
                         Label("Select a photo", systemImage: "photo.artframe")
                     }
-                    .onChange(of: selectedItem) { newValue in
+                    .onChange(of: selectedItem) { _ in
                         Task {
-                            if let imageData = try? await newValue?.loadTransferable(type: Data.self), let image = UIImage(data: imageData) {
-                                selectedImage = Image(uiImage: image)
-                            }
+//                            if let imageData = try? await selectedItem?.loadTransferable(type: Data.self), let image = UIImage(data: imageData) {
+//                                selectedImage = Image(uiImage: image)
+//                            }
                         }
                     }
                 }

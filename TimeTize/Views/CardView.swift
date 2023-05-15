@@ -17,28 +17,6 @@ struct CardView: View {
     
     @ObservedObject var myData = sharedData
     
-    // Function to assign each priority value a color
-    func toColor(priority: Int)->Color{
-        switch(priority){
-        case 0:
-            return Color.blue
-        case 1:
-            return Color.cyan
-        case 2:
-            return Color.teal
-        case 3:
-            return Color.green
-        case 4:
-            return Color.yellow
-        case 5:
-            return Color.orange
-        case 6:
-            return Color.red
-        default:
-            return Color.gray
-        }
-    }
-    
     var body: some View {
         // START OF ZSTACH
         ZStack{
@@ -88,7 +66,7 @@ struct CardView: View {
                 // END OF ZSTACK
                 Circle()
                     .frame(width: 35)
-                    .foregroundColor(toColor(priority: priority))
+                    .foregroundColor(Data().toColor(priority: priority))
                     .padding(.horizontal,2)
             }
             // END OF HSTACK

@@ -9,44 +9,6 @@ import SwiftUI
 import UserNotifications
 
 struct NewTaskView: View {
-    // Function to get the permission to send notifications once hit plus
-    func allowNotifications(title: String, subtitle: String) {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
-            if success {
-                notify(title: title, subtitle: subtitle)
-            } else if let error = error {
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    // NEXT: MAKE THE PUSH NOTIFICATION WITH THE FOLLOWING CODE
-    func notify(title: String, subtitle: String){
-        let center = UNUserNotificationCenter.current()
-        let content = UNMutableNotificationContent()
-        content.title = title
-        content.subtitle = subtitle
-        content.sound = .default
-        
-        if let imageURL = Bundle.main.url(forResource: "cat", withExtension: "png") {
-            let attachment = try? UNNotificationAttachment(identifier: "image", url: imageURL, options: nil)
-            
-            content.attachments = [attachment!]
-        }
-        
-        let setReminder = Date().addingTimeInterval(30)
-        let comp = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: setReminder)
-        
-        // show this notification five seconds from now
-        let trigger = UNCalendarNotificationTrigger(dateMatching: comp, repeats: false)
-        
-        // choose a random identifier
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-        
-        // add our notification request
-        center.add(request)
-    }
-    
     // Task information
     @State var name: String = ""
     @State private var shouldFreeze = false
@@ -86,7 +48,7 @@ struct NewTaskView: View {
                 }
                 // Button to add a new task form
                 Button("Add new task") {
-                    myData.newTasks.append(PlannedTask(taskName: "", taskStart: Date(), taskEnd: Date(), taskRange: "", repStart: Date(), repEnd: Date(), notification: false, tagIndex: 0, searched: false))
+                    myData.newTasks.append(PlannedTask(taskName: "", taskStart: Date(), taskEnd: Date(), repStart: Date(), repEnd: Date(), notification: false, tagIndex: 0, searched: false))
                 }.padding(.leading, 100.0)
             }
             // END OF FORM
@@ -108,16 +70,16 @@ struct NewTaskView: View {
                                 taskName: name,
                                 taskStart: start,
                                 taskEnd: end,
-                                taskRange: toString(format: "hh:mm", dateSource: start) + "-" + toString(format: "hh:mm", dateSource: end),
                                 repStart: rStart,
                                 repEnd: rEnd,
                                 notification: false,
                                 tagIndex: index,
-                                searched: false
+                                searched: false,
+                                priority: 0
                             )
                         )
                         if(shouldAllowNotifications){
-                            allowNotifications(title: name, subtitle: toString(format: "hh:mm", dateSource: start) + "-" + toString(format: "hh:mm", dateSource: end))
+                            Data().allowNotifications(title: name, subtitle: toString(format: "hh:mm", dateSource: start) + "-" + toString(format: "hh:mm", dateSource: end))
                         }
                         shouldPlan = true
                     }

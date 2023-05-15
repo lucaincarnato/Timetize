@@ -11,7 +11,7 @@ struct SearchView: View {
     
     @State private var searchText = ""  // Placeholder text for the search field
     @ObservedObject var myData = sharedData
-    @State var task: PlannedTask?  // Placeholder task for the history
+    @State var thisTask: PlannedTask?  // Placeholder task for the history
     @Environment(\.colorScheme) var colorScheme // System color for the dark mode
     
     // Function to format a Date to string
@@ -41,9 +41,9 @@ struct SearchView: View {
                                 if(!task.searched){
                                     task.searched.toggle()
                                 }
-                                self.task = task
+                                self.thisTask = task
                             } label: {
-                                CardView(name: task.taskName, start: toString(format: "YY/MM/dd hh:mm a", dateSource: task.taskStart), end: toString(format: "YY/MM/dd hh:mm a", dateSource: task.taskEnd), index: task.tagIndex, priority: 3)
+                                CardView(name: task.taskName, start: toString(format: "YY/MM/dd hh:mm a", dateSource: task.taskStart), end: toString(format: "YY/MM/dd hh:mm a", dateSource: task.taskEnd), index: task.tagIndex, priority: task.priority)
                                     .foregroundColor(colorScheme == .light ? .white: .black)
                             }
                         }
@@ -60,9 +60,9 @@ struct SearchView: View {
                             if(recent.searched){
                                 // Task card 
                                 Button {
-                                    self.task = recent
+                                    self.thisTask = recent
                                 } label: {
-                                    CardView(name: recent.taskName, start: toString(format: "YY/MM/dd hh:mm", dateSource: recent.taskStart), end: toString(format: "YY/MM/dd hh:mm", dateSource: recent.taskEnd), index: recent.tagIndex, priority: 3)
+                                    CardView(name: recent.taskName, start: toString(format: "YY/MM/dd hh:mm", dateSource: recent.taskStart), end: toString(format: "YY/MM/dd hh:mm", dateSource: recent.taskEnd), index: recent.tagIndex, priority: recent.priority)
                                         .foregroundColor(colorScheme == .light ? .white: .black)
                                 }
                             }
@@ -79,7 +79,7 @@ struct SearchView: View {
             // END OF ZSTACK
             .navigationTitle("Search")
             // Sheet to show task information
-            .sheet(item: $task) { task in
+            .sheet(item: $thisTask) { task in
                 TaskInfoView(task: task)
             }
         }
