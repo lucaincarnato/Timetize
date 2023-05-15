@@ -10,7 +10,7 @@ import PhotosUI
 import UserNotifications
 
 
-struct WallpaperAlertView: View {
+struct NotificationImageView: View {
     
     @State private var selectedItem: PhotosPickerItem?
     @State var selectedImage: Image?
@@ -66,7 +66,7 @@ struct WallpaperAlertView: View {
     
     struct WallpaperAlertView_Previews: PreviewProvider {
         static var previews: some View {
-            WallpaperAlertView()
+            NotificationImageView()
         }
     }
 }

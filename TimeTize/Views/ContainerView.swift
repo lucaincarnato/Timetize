@@ -11,10 +11,10 @@ struct ContainerView: View {
     var body: some View {
         TabView{
             // Calendar page
-            CalendarView()
+            DashboardView()
                 .tabItem {
                     Image(systemName: "calendar")
-                    Text("Tasks")
+                    Text("Dashboard")
                 }
             // Search page
             SearchView()

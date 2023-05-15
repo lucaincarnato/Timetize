@@ -11,7 +11,7 @@ import SwiftUI
 import Foundation
 import UserNotifications
 
-struct CalendarView: View {
+struct DashboardView: View {
     
     
     // Function to format a Date to string
@@ -90,7 +90,7 @@ struct CalendarView: View {
                             // END OF FOREACH
                         }
                         // END OF SCROLLVIEW
-                        .navigationTitle("Tasks")
+                        .navigationTitle("Dashboard")
                         .padding(.horizontal, 15)
                         // Button to add new tasks
                         .toolbar {
@@ -124,7 +124,7 @@ struct CalendarView: View {
                             // END OF FOREACH
                         }
                         // END OF SCROLLVIEW
-                        .navigationTitle("Tasks")
+                        .navigationTitle("Dashboard")
                         .padding(.vertical,20)
                         .padding(.horizontal)
                         // Button to add new tasks
@@ -175,7 +175,7 @@ struct CalendarView: View {
                         .padding(.bottom, 90)
                         .padding(.horizontal, 16)
                         .ignoresSafeArea()
-                        .navigationTitle("Tasks")
+                        .navigationTitle("Dashboard")
                         // Button to add new task
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
@@ -211,6 +211,6 @@ struct CalendarView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarView()
+        DashboardView()
     }
 }

@@ -49,7 +49,7 @@ struct QuestionsView: View {
             })
             // It is shown only if the task has notification
             if(shouldAllowNotifications){
-                NavigationLink(destination: WallpaperAlertView()){
+                NavigationLink(destination: NotificationImageView()){
                     Text("Image notification")
                 }
             }

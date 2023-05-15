@@ -20,6 +20,7 @@ struct PlannedTask: Identifiable, Equatable{
     var repStart: Date
     var repEnd: Date
     var notification: Bool
+    var taskImage: Image?
     var tagIndex: Int
     var searched: Bool
 }

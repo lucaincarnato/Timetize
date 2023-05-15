@@ -20,7 +20,7 @@ struct TaskInfoView: View {
         formatter.dateFormat = format
         return formatter.string(from: dateSource)
     }
-    
+        
     var body: some View {
         // START OF NAVIGATIONSTACK
         NavigationStack {
@@ -42,7 +42,7 @@ struct TaskInfoView: View {
                     })
                     // Shown only if the notification is allowed
                     if(task.notification){
-                        NavigationLink(destination: WallpaperAlertView()){
+                        NavigationLink(destination: NotificationImageView()){
                             Text("Image notification")
                         }
                     }
