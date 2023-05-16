@@ -25,7 +25,7 @@ struct FreeTimeView: View {
                 // END OF SECTION
                 // START OF FOREACH to show all the set free time
                 ForEach(myData.freeTimes){ ft in
-                    NewFreeTimeView(freeTime: ft)
+                    NewFreeTimeView(freeTime: ft, oldFreeTime: ft)
                 }
                 .onDelete { ft in
                     myData.freeTimes.remove(atOffsets: ft)

@@ -94,7 +94,7 @@ class Data: ObservableObject {
     ]
     
     // Array for the free times
-    @Published var freeTimes = [
+    @Published var freeTimes: [FreeTime] = [
         FreeTime(name: "Dinner", start: Date.now, end: Date.now.addingTimeInterval(3600))
     ]
     

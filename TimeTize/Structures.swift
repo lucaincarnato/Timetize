@@ -44,7 +44,7 @@ struct Tag: Identifiable{
 }
 
 // Components for the free time
-struct FreeTime: Identifiable{
+struct FreeTime: Identifiable, Equatable{
     var id = UUID()
     var name: String
     var start: Date

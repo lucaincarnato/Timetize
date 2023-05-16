@@ -10,6 +10,7 @@ import SwiftUI
 struct NewFreeTimeView: View {
     
     @State var freeTime: FreeTime   // Placeholder free time
+    @State var oldFreeTime: FreeTime
     @ObservedObject var myData = sharedData
     
     var body: some View {
@@ -20,8 +21,10 @@ struct NewFreeTimeView: View {
             DatePicker(selection: $freeTime.end, displayedComponents: .hourAndMinute, label: { Text("End") })
         }
         .onSubmit {
+            let index: Int = myData.freeTimes.firstIndex(of: oldFreeTime)!
+            myData.freeTimes.remove(at: index)
             // Make changes in the array
-            print("")
+            myData.freeTimes.append(freeTime)
         }
         // END OF SECTION
     }
@@ -29,6 +32,6 @@ struct NewFreeTimeView: View {
 
 struct NewFreeTimeView_Previews: PreviewProvider {
     static var previews: some View {
-        NewFreeTimeView(freeTime: FreeTime(name: "", start: Date(), end: Date()))
+        NewFreeTimeView(freeTime: FreeTime(name: "", start: Date(), end: Date()), oldFreeTime: FreeTime(name: "", start: Date(), end: Date()))
     }
 }
